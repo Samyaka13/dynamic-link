@@ -1,39 +1,57 @@
 # Plunge - Dynamic Link Backend
 
-Plunge is a Node.js backend application designed to act as a dynamic link shortener and tracker. It captures information about users clicking a link, such as their IP address, approximate location, device type, and operating system, and then redirects them to a pre-configured destination URL (e.g., an app store page or a fallback website). It also provides API endpoints to retrieve the collected click data.
+**Plunge** is a Node.js backend application that serves as a dynamic link shortener and click tracker. It captures valuable information about users clicking a link—such as IP address, location, device type, operating system, and more—and redirects them to the appropriate destination (e.g., an app store link or a fallback URL). The application also provides RESTful APIs to retrieve the collected click data.
 
-## Features
+🔗 **Deployed Link**: [https://plunge-assignment.onrender.com/](https://plunge-assignment.onrender.com/)
 
-*   **Dynamic Redirection:** Redirects users based on their operating system (Android, iOS) to respective app stores or a fallback URL.
-*   **Click Tracking:** Logs details for each click:
-    *   Timestamp
-    *   IP Address
-    *   Approximate City & Region (via [ipapi.co](https://ipapi.co/))
-    *   Device Type (desktop, mobile, tablet)
-    *   Operating System
-    *   Device Vendor
-    *   Referrer URL
-    *   Redirected-to URL
-*   **Data Storage:** Uses MongoDB to store click data.
-*   **User Agent Parsing:** Uses `ua-parser-js` to extract device and OS information.
+---
 
-## Tech Stack
+## 🚀 Features
 
-*   **Backend:** Node.js, Express.js
-*   **Database:** MongoDB with Mongoose ODM
-*   **User Agent Parsing:** `ua-parser-js`
-*   **HTTP Client (for GeoIP):** `axios`
-*   **Environment Variables:** `dotenv`
-*   **CORS:** `cors`
-*   **Development:** `nodemon`
+- **Dynamic Redirection**  
+  Redirects users to appropriate URLs based on their operating system (Android/iOS) or to a fallback URL.
 
-## Prerequisites
+- **Click Tracking**  
+  Captures the following data on each click:
 
-*   [Node.js](https://nodejs.org/) (v18.x or later recommended, due to ES Modules usage)
-*   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-*   [MongoDB](https://www.mongodb.com/try/download/community) instance (local or cloud-hosted like MongoDB Atlas)
+  - Timestamp
+  - IP Address
+  - Approximate City & Region (via [ipapi.co](https://ipapi.co/))
+  - Device Type (Desktop, Mobile, Tablet)
+  - Operating System
+  - Device Vendor
+  - Referrer URL
+  - Redirect Destination URL
 
-## Getting Started
+- **Persistent Data Storage**  
+  Uses MongoDB to persist all click-related data.
+
+- **User Agent Analysis**  
+  Parses user agent strings using `ua-parser-js` to determine OS and device information.
+
+---
+
+## 🛠 Tech Stack
+
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB with Mongoose ODM
+- **User Agent Parsing:** `ua-parser-js`
+- **GeoIP Service:** [ipapi.co](https://ipapi.co/) via `axios`
+- **Environment Management:** `dotenv`
+- **CORS Handling:** `cors`
+- **Development Tools:** `nodemon`
+
+---
+
+## 📦 Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18.x or later recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [MongoDB](https://www.mongodb.com/try/download/community) instance (local or cloud-hosted like MongoDB Atlas)
+
+---
+
+## 🧑‍💻 Getting Started
 
 ### 1. Clone the Repository
 
@@ -43,18 +61,19 @@ cd plunge
 npm install
 # or
 # yarn install
-# .env
 ```
-# ENV Files
 
-## MongoDB Configuration
-MONGODB_URI="your_mongodb_connection_string_here" 
-DB_NAME="plunge"
+### 2. Configure Environment Variables
 
-## Server Configuration
+# MongoDB Configuration
+
+MONGODB_URI="your_mongodb_connection_string_here"
+
+# Server Configuration
+
 PORT=8000
-CORS_ORIGIN="*"
+CORS_ORIGIN="\*"
 
-# Start the server
+### 3. Start the Development Server
+
 npm run dev
-
