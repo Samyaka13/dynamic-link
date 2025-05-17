@@ -62,7 +62,6 @@ router.get('/', async (req, res) => {
           city = geoResponse.data.city || "Unknown";
           region = geoResponse.data.region || "Unknown";
         } else if (geoResponse.data && geoResponse.data.reason) {
-          // ipapi.co returned a specific error (e.g., rate limit, reserved IP)
           console.warn(`[GEO-IP] API error from ipapi.co for IP ${clientIp}: ${geoResponse.data.reason}`);
         } else {
           console.warn(`[GEO-IP] ipapi.co returned an unexpected response or no location data for IP ${clientIp}.`);
@@ -73,7 +72,6 @@ router.get('/', async (req, res) => {
           console.error(`[GEO-IP] ipapi.co error status: ${geoError.response.status}`);
           console.error(`[GEO-IP] ipapi.co error data:`, geoError.response.data);
         }
-        // city and region remain "Unknown"
       }
     } else {
       console.log(`[GEO-IP] Skipped geolocation for non-public or undefined IP: ${clientIp}`);
@@ -90,7 +88,7 @@ router.get('/', async (req, res) => {
 
     await Click.create({
       timestamp,
-      ip: clientIp || "Unknown", // Store the determined IP
+      ip: clientIp || "Unknown", 
       city,
       region,
       deviceType: ua.device.type || "desktop",
@@ -103,7 +101,6 @@ router.get('/', async (req, res) => {
     return res.redirect(302, redirectUrl);
   } catch (error) {
     console.error("[TRACKING] Overall tracking error:", error.message, error.stack);
-    // In case of any error during the process, redirect to a fallback URL
     return res.redirect(FALLBACK_URL);
   }
 });
