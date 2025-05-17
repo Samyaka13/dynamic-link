@@ -1,0 +1,16 @@
+{
+  "name": "plunge",
+  "version": "1.0.0",
+  "description": " a backend for dynamic link",
+  "keywords": [
+    "js",
+    "backend"
+  ],
+  "license": "ISC",
+  "author": "Samyak",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
