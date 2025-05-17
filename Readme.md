@@ -65,11 +65,11 @@ npm install
 
 ### 2. Configure Environment Variables
 
-# MongoDB Configuration
+#### MongoDB Configuration
 
 MONGODB_URI="your_mongodb_connection_string_here"
 
-# Server Configuration
+##### Server Configuration
 
 PORT=8000
 CORS_ORIGIN="\*"
